@@ -1,0 +1,201 @@
+order_id	order_date	region	segment	category	sales	quantity	discount	profit
+ORD-00001	2021-08-17	East	Home Office	Furniture	497.33	5	0.37	74.68
+ORD-00002	2021-03-03	East	Consumer	Technology	1015.66	1	0.28	188.68
+ORD-00003	2022-07-24	East	Consumer	Office Supplies	851.0	9	0.08	296.42
+ORD-00004	2022-12-06	North	Corporate	Technology	1462.17	18	0.06	496.38
+ORD-00005	2023-01-11	North	Consumer	Office Supplies	148.41	8	0.39	35.54
+ORD-00006	2023-07-18	West	Consumer	Furniture	716.99	9	0.35	112.68
+ORD-00007	2022-05-17	west	Corporate	Furniture	547.2	18	0.11	30.26
+ORD-00008	2022-10-09	South	Corporate	Technology	429.86	19	0.44	13.8
+ORD-00009	2023-07-29	west	Corporate	Technology	500.79	18	0.27	99.99
+ORD-00010	2021-10-11	North	Corporate	Technology	1514.01	4	0.08	-27.87
+ORD-00011	2023-08-17	North	Corporate	Office Supplies	999999	1	0.34	-48.58
+ORD-00012	2022-11-28	East	Corporate	Furniture	324.73	1	0.48	57.06
+ORD-00013	2021-08-06	West	Home Office	Office Supplies	1221.85	5	0.19	-19.03
+ORD-00014	2022-10-26	South	Consumer	Technology	1858.91	10	0.12	33.43
+ORD-00015	2021-05-22	North	Consumer	Technology	1322.9	18	0.08	199.4
+ORD-00016	2022-02-16	West	Corporate	Office Supplies	1303.26	15	0.45	
+ORD-00017	2022-04-17	North	Consumer	Technology	151.28	2	0.11	47.49
+ORD-00018	2023-09-22	west	Home Office	Technology	1449.47	19	0.29	22.12
+ORD-00019	2023-06-02	West	Corporate	Furniture	939.38	2	0.34	243.09
+ORD-00020	2021-08-12	west	Consumer	Technology	1077.21	5	0.21	33.42
+ORD-00021	2021-07-20	East	Home Office	Office Supplies	1673.69	3	0.46	-99999
+ORD-00022	2023-04-02	East	Consumer	Furniture	14.29	13	0.13	3.63
+ORD-00023	2023-09-24	west	Consumer	Furniture	443.22	2	0.29	53.84
+ORD-00024	2023-10-27	North	Consumer	Technology	1921.95	3	0.43	-72.02
+ORD-00025	2022-05-20	North	Home Office	Technology	1242.57	14	0.33	152.03
+ORD-00026	2022-10-06	west	Corporate	Furniture	270.45	10	23%	75.91
+ORD-00027	2021-07-24	East	Home Office	Technology	1016.71	5	0.47	183.44
+ORD-00028	2022-09-12	North	Home Office	Office Supplies	25.57	18	0.15	5.04
+ORD-00029	2021-08-08	North	Consumer	Furniture	570.69	7	0.36	0.66
+ORD-00030	2021-04-15	East	Home Office	Furniture	1660.4	2	0.0	474.14
+ORD-00031	2023-05-26	North	Consumer	Technology	159.74	5	0.27	37.0
+ORD-00032	2022-09-24	West	Consumer	Furniture	428.05	8	0.33	22.04
+ORD-00033	2021-11-13	west	Consumer	Technology	1764.02	1	0.09	581.49
+ORD-00034	2022-05-24	West	Consumer	Office Supplies	225.11	2	0.43	1.44
+ORD-00035	2022-04-12	west	Consumer	Office Supplies	394.33	11	0.14	-22.14
+ORD-00036	2022-11-10	East	Consumer	Furniture	365.35	9	0.02	70.99
+ORD-00037	2023-11-14	East	Corporate	Office Supplies	388.26	2	0.35	-25.02
+ORD-00038	2022-02-08	West	Corporate	Technology	1898.26	11	0.31	303.47
+ORD-00039	2023-04-17	West	Corporate	Office Supplies	598.35	5	0.1	125.19
+ORD-00040	2022-09-09	South	Home Office	Technology	614.71	7	0.21	92.26
+ORD-00041	2022-03-14	North	Corporate	Office Supplies	347.69	3	0.14	69.35
+ORD-00042	2022-04-27	West	Consumer	Technology	303.23	2	0.12	36.71
+ORD-00043	2022-02-03	South	Corporate	Furniture	495.53	1	0.45	90.0
+ORD-00044	2023-11-27	South	Consumer	Office Supplies	505.9	4	0.23	117.14
+ORD-00045	2023-06-26	North	Home Office	Office Supplies	859.21	18	0.22	-13.69
+ORD-00046	2022-07-22	North	Corporate	Office Supplies	486.1	15	0.04	20.0
+ORD-00047	2021-10-11	west	Consumer	Furniture	1390.96	7	0.03	140.05
+ORD-00048	2023-05-11	South	Home Office	Office Supplies	48.87	19	0.19	-3.84
+ORD-00049	2023-05-09	North	Home Office	Office Supplies	1096.8	20	0.45	86.94
+ORD-00050	2023-04-09	west	Corporate	Technology	1961.64	18	0.01	188.4
+ORD-00051	2021-10-05	South	Consumer	Technology	527.71	11	0.11	29.79
+ORD-00052	2023-05-14	West	Consumer	Furniture	48.57	18	0.03	17.71
+ORD-00053	2021-03-24	East	Consumer	Technology	1680.07	20	0.08	-57.02
+ORD-00054	2022-06-09	West	Consumer	Office Supplies	1218.42	4	0.39	-13.47
+ORD-00055	2023-02-08	South	Home Office	Technology	161.23	8	0.05	43.84
+ORD-00056	2021-03-26	West	Home Office	Furniture	1326.43	3	0.25	70.25
+ORD-00057	2023-01-12	South	Home Office	Technology	876.62	17	0.48	15.97
+ORD-00058	2023-06-12	North	Corporate	Furniture	1704.91	3	0.14	183.87
+ORD-00059	2022-11-20	East	Corporate	Furniture	371.86	7	0.18	8.9
+ORD-00060	2021-01-21	North	Consumer	Technology	490.3	14	0.24	103.99
+ORD-00061	2021-02-05	East	Corporate	Technology	814.76	8	0.15	132.12
+ORD-00062	2022-11-09	West	Home Office	Furniture	549.12	9	0.12	125.95
+ORD-00063	2022-01-15	west	Consumer	Office Supplies	973.56	19	0.49	80.59
+ORD-00064	2022-04-11	West	Consumer	Furniture	?	18	0.06	-2.77
+ORD-00065	2023-10-03	East	Consumer	Office Supplies	?	16	0.22	-3.51
+ORD-00066	2021-05-14	South	Corporate	Technology	1158.27	2	0.08	325.62
+ORD-00067	2023-05-03	North	Home Office	Office Supplies	459.12	17	0.19	131.74
+ORD-00068	2021-05-04	North	Home Office	Technology	1895.7	7	0.31	42.28
+ORD-00069	2021-11-17	East	Corporate	Furniture	1381.85	16	0.15	18.49
+ORD-00070	2022-04-24	West	Home Office	Office Supplies	1325.75	7	0.21	180.44
+ORD-00071	2021-05-27	East	Consumer	Furniture	1194.14	19	0.46	77.11
+ORD-00072	2022-07-12	North	Home Office	Furniture	881.14	20	0.02	100.18
+ORD-00073	2021-02-12	West	Home Office	Technology	1528.59	6	0.24	262.27
+ORD-00074	2023-10-05	East	Corporate	Furniture	822.61	11	0.34	178.55
+ORD-00075	2023-04-01	North	Consumer	Furniture	185.24	9	0.16	59.92
+ORD-00076	2023-08-05	South	Consumer	Technology	1041.69	20	0.38	137.37
+ORD-00077	2022-08-13	South	Home Office	Furniture	251.64	20	40%	38.48
+ORD-00078	2022-04-06	East	Corporate	Technology	1298.94	5	0.25	251.64
+ORD-00079	2023-08-26	west	Corporate	Office Supplies	297.84	7	0.46	24.79
+ORD-00080	2023-04-30	West	Home Office	Furniture	1642.89	10	0.36	335.14
+ORD-00081	2023-07-04	North	Corporate	Furniture	671.56	18	0.19	199.32
+ORD-00082	2023-02-24	west	Corporate	Technology	643.17	16	0.35	127.8
+ORD-00083	2021-11-08	South	Consumer	Technology	1009.56	19	0.17	-41.74
+ORD-00084	2021-02-01	west	Corporate	Office Supplies	1940.21	3	0.23	574.58
+ORD-00085	2022-11-04	North	Corporate	Furniture	1257.33	16	0.44	-57.77
+ORD-00086	2022-04-11	East	Corporate	Technology	1523.14	4	0.22	293.45
+ORD-00087	2022-08-24	West	Corporate	Furniture	299.68	17	0.21	57.03
+ORD-00088	2023-02-23	North	Home Office	Technology	1000.36	19	0.07	
+ORD-00089	2023-08-11	West	Home Office	Office Supplies	324.37	15	0.47	67.71
+ORD-00090	2023-07-25	West	Consumer	Furniture	1708.14	4	0.12	279.53
+ORD-00091	2023-03-22	West	Consumer	Office Supplies	1731.48	2	0.46	254.87
+ORD-00092	2022-04-17	North	Corporate	Technology	1276.87	20	0.13	308.59
+ORD-00093	2021-07-18	East	Corporate	Furniture	76.4	12	0.37	-2.64
+ORD-00094	2021-09-28	North	Corporate	Office Supplies	1008.57	9	0.42	16.66
+ORD-00095	2022-11-25	East	Corporate	Technology	290.11	8	0.43	43.34
+ORD-00096	2023-01-20	East	Corporate	Technology	536.27	4	0.23	97.62
+ORD-00097	2023-01-31	East	Home Office	Technology	948.24	20	0.44	95.96
+ORD-00098	2023-08-09	West	Home Office	Furniture	242.19	2	0.47	6.7
+ORD-00099	2021-10-05	South	Corporate	Furniture	1344.27	18	0.21	287.94
+ORD-00100	2023-09-30	North	Corporate	Furniture	75.11	12	0.11	8.18
+ORD-00101	2023-01-23	North	Home Office	Furniture	130.49	9	0.09	-4.62
+ORD-00102	2021-02-13	East	Corporate	Technology	1977.75	19	0.1	560.53
+ORD-00103	2022-04-23	West	Consumer	Office Supplies	15.64	5	0.49	1.36
+ORD-00104	2021-09-27	East	Corporate	Technology	1181.82	1	0.09	-79.37
+ORD-00105	2023-09-03	South	Corporate	Office Supplies		15	0.25	333.03
+ORD-00106	2023-12-04	West	Corporate	Office Supplies	1928.41	2	0.5	312.06
+ORD-00107	2023-06-28	East	Consumer	Furniture	1220.51	3	0.06	243.41
+ORD-00108	2023-12-23	West	Corporate	Office Supplies	1214.8	4	0.4	-31.19
+ORD-00109	2022-03-17	South	Corporate	Technology	833.49	15	0.2	176.57
+ORD-00110	2021-11-09	South	Consumer	Technology	1665.23	3	0.22	353.68
+ORD-00111	2022-11-07	East	Corporate	Furniture	1748.48	14	0.43	259.65
+ORD-00112	2023-11-06	west	Consumer	Office Supplies	969.56	4	0.18	141.62
+ORD-00113	2023-05-29	North	Home Office	Office Supplies	1353.2	18	0.01	488.37
+ORD-00114	2022-09-25	West	Corporate	Technology	371.0	5	0.28	
+ORD-00115	2023-12-23	west	Corporate	Furniture	912.76	6	0.19	192.82
+ORD-00116	2021-04-18	west	Consumer	Office Supplies	109.03	3	0.14	21.66
+ORD-00117	2023-11-16	East	Corporate	Furniture		19	0.24	40.95
+ORD-00118	2021-01-16	west	Corporate	Technology	1537.03	9	0.14	-52.88
+ORD-00119	2023-12-27	west	Home Office	Office Supplies		12	4%	529.95
+ORD-00120	2022-10-04	North	Corporate	Office Supplies	814.8	14	0.14	71.84
+ORD-00121	2023-08-01	West	Consumer	Furniture	1690.52	8	0.22	132.16
+ORD-00122	2022-03-30	West	Consumer	Technology	1025.86	4	0.27	-2.28
+ORD-00123	2021-10-30	west	Consumer	Technology	519.38	6	0.3	101.84
+ORD-00124	2023-10-09	South	Home Office	Office Supplies	903.32	19	0.32	241.57
+ORD-00125	2023-06-20	East	Corporate	Furniture	1266.46	9	0.3	
+ORD-00126	2023-01-26	West	Consumer	Office Supplies	1729.86	3	0.31	183.26
+ORD-00127	2021-03-26	South	Home Office	Office Supplies	384.6	20	0.24	-7.18
+ORD-00128	2022-12-05	East	Home Office	Office Supplies	353.39	8	0.35	90.85
+ORD-00129	2022-08-03	South	Corporate	Furniture	1361.01	2	0.39	185.68
+ORD-00130	2022-08-05	West	Home Office	Office Supplies	1929.18	20	0.44	72.04
+ORD-00131	2023-03-14	west	Home Office	Office Supplies	1876.62	10	0.28	299.62
+ORD-00132	2023-12-15	East	Home Office	Office Supplies	852.58	12	0.01	45.94
+ORD-00133	2022-01-29	west	Consumer	Technology	163.56	4	0.25	20.84
+ORD-00134	2021-09-26	North	Corporate	Technology	332.87	20	0.4	-3.44
+ORD-00135	2022-05-02	South	Home Office	Furniture	1507.26	15	0.12	25.98
+ORD-00136	2022-02-02	West	Home Office	Office Supplies	1969.04	15	0.38	352.89
+ORD-00137	2022-02-13	North	Consumer	Furniture	113.84	16	0.44	11.3
+ORD-00138	2022-08-07	East	Consumer	Furniture	904.15	17	0.07	99.84
+ORD-00139	2022-12-17	East	Corporate	Technology	798.94	12	0.12	279.3
+ORD-00140	2022-11-18	west	Consumer	Technology	580.89	16	0.35	
+ORD-00141	2021-06-12	East	Corporate	Technology	1671.58	18	0.47	181.12
+ORD-00142	2021-09-07	East	Consumer	Furniture	1281.51	20	0.23	
+ORD-00143	2023-11-22	North	Consumer	Office Supplies	295.72	14	0.0	22.6
+ORD-00144	2023-12-09	West	Consumer	Office Supplies	1092.72	17	0.28	74.92
+ORD-00145	2022-06-04	East	Corporate	Technology	696.16	4	0.39	113.64
+ORD-00146	2021-12-25	South	Home Office	Furniture	1267.15	5	0.03	354.11
+ORD-00147	2022-02-13	East	Corporate	Furniture	1035.61	18	0.24	-64.29
+ORD-00148	2021-04-08	West	Corporate	Technology	1600.69	14	0.44	243.51
+ORD-00149	2023-10-14	South	Corporate	Office Supplies	540.77	3	0.36	-20.95
+ORD-00150	2022-10-20	East	Consumer	Furniture	1325.23	10	0.22	267.55
+ORD-00151	2022-12-24	North	Corporate	Furniture	1282.54	2	0.04	269.34
+ORD-00152	2021-03-05	west	Home Office	Office Supplies	1564.81	2	0.06	26.47
+ORD-00153	2021-03-08	North	Consumer	Office Supplies	905.35	12	0.19	206.46
+ORD-00154	2022-07-25	west	Consumer	Technology	1473.99	16	0.26	389.15
+ORD-00155	2022-03-16	North	Corporate	Office Supplies	1833.79	16	0.1	-53.04
+ORD-00156	2021-06-29	West	Home Office	Furniture	1421.99	18	0.27	358.82
+ORD-00157	2021-12-23	West	Home Office	Technology	251.51	7	0.4	2.77
+ORD-00158	2023-08-16	North	Consumer	Office Supplies	1769.65	3	0.15	601.38
+ORD-00159	2021-06-01	west	Corporate	Office Supplies	157.59	15	0.34	7.52
+ORD-00160	2022-01-08	west	Corporate	Office Supplies	1822.32	2	0.42	168.11
+ORD-00161	2022-04-07	West	Home Office	Furniture	1693.41	9	0.1	576.37
+ORD-00162	2021-07-11	North	Home Office	Technology	1187.7	19	0.08	250.63
+ORD-00163	2021-03-26	East	Consumer	Technology	1897.61	19	0.13	
+ORD-00164	2022-08-17	West	Corporate	Technology	?	13	0.15	-86.99
+ORD-00165	2022-02-22	West	Home Office	Technology	632.04	11	0.37	131.56
+ORD-00166	2021-08-06	West	Consumer	Furniture	253.82	15	0.12	-11.52
+ORD-00167	2022-05-24	west	Corporate	Office Supplies	1445.05	7	0.38	133.61
+ORD-00168	2021-02-17	East	Corporate	Office Supplies	?	8	0.11	62.59
+ORD-00169	2023-08-22	West	Home Office	Technology	1695.87	14	0.07	50.84
+ORD-00170	2021-04-15	North	Home Office	Technology	731.42	10	0.04	106.82
+ORD-00171	2021-09-01	west	Consumer	Furniture	752.66	11	0.28	44.87
+ORD-00172	2021-03-24	East	Consumer	Technology	1430.05	16	0.26	-27.02
+ORD-00173	2022-10-15	west	Corporate	Office Supplies	1481.25	10	0.3	159.32
+ORD-00174	2023-08-31	East	Corporate	Furniture	1350.87	14	0.29	
+ORD-00175	2023-08-30	West	Home Office	Office Supplies	1159.49	2	0.29	-12.14
+ORD-00176	2021-10-30	west	Consumer	Office Supplies	1896.93	4	0.1	205.75
+ORD-00177	2023-10-25	North	Corporate	Office Supplies	1457.53	5	0.26	194.62
+ORD-00178	2021-12-21	South	Home Office	Furniture	1097.08	9	0.31	-2.93
+ORD-00179	2022-09-02	West	Home Office	Technology	1383.58	16	0.16	86.47
+ORD-00180	2021-09-07	North	Home Office	Office Supplies	765.59	13	0.41	170.43
+ORD-00181	2021-06-11	West	Corporate	Office Supplies	520.32	16	0.11	145.4
+ORD-00182	2021-08-12	North	Home Office	Office Supplies	486.17	2	0.33	53.92
+ORD-00183	2023-08-26	East	Home Office	Technology	20.31	18	0.49	-0.22
+ORD-00184	2022-02-13	West	Corporate	Furniture	1295.34	3	0.33	
+ORD-00185	2021-12-25	South	Consumer	Technology	1994.37	13	0.39	-8.33
+ORD-00186	2021-03-18	East	Corporate	Office Supplies	1209.54	11	0.14	410.41
+ORD-00187	2023-10-30	South	Corporate	Technology	1619.54	11	0.08	192.89
+ORD-00188	2022-08-28	North	Home Office	Technology	359.23	13	0.41	33.41
+ORD-00189	2021-10-15	South	Corporate	Technology	23.59	13	0.12	5.75
+ORD-00190	2021-01-24	West	Home Office	Furniture	1388.61	2	0.33	123.46
+ORD-00191	2022-09-29	East	Home Office	Furniture	741.41	8	0.11	-21.92
+ORD-00192	2023-05-02	North	Corporate	Office Supplies	1605.97	7	0.38	239.14
+ORD-00193	2023-12-18	West	Consumer	Office Supplies	233.3	18	0.45	0.14
+ORD-00194	2023-06-24	East	Home Office	Technology	1436.67	16	0.05	211.81
+ORD-00195	2023-07-25	North	Consumer	Office Supplies	930.13	10	0.36	58.32
+ORD-00196	2021-04-03	South	Corporate	Office Supplies	136.88	2	0.47	-4.75
+ORD-00197	2021-10-05	South	Corporate	Furniture	902.59	13	0.19	176.46
+ORD-00198	2022-12-14	East	Consumer	Office Supplies	$792.19	5	0.36	5.75
+ORD-00199	2023-05-19	North	Corporate	Technology	502.55	12	0.08	
+ORD-00200	2023-05-09	North	Consumer	Technology	420.1	4	0.3	36.24

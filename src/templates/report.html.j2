@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auto-Insight Report — {{ bundle.source.filename }}</title>
+  <script>{{ plotly_js }}</script>
+  <style>
+    :root {
+      --primary: #1f77b4;
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --border: #dee2e6;
+      --text: #212529;
+      --muted: #6c757d;
+      --warning: #fd7e14;
+      --info: #0dcaf0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 2rem 3rem;
+    }
+    header h1 { margin: 0; font-size: 1.8rem; }
+    header p { margin: 0.4rem 0 0; opacity: 0.85; font-size: 0.95rem; }
+    main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+    section { margin-bottom: 2.5rem; }
+    h2 {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 0.4rem;
+      margin-top: 0;
+      color: var(--primary);
+      font-size: 1.3rem;
+    }
+    h3 { color: #343a40; font-size: 1.05rem; margin-top: 1.5rem; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .metric-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+      text-align: center;
+    }
+    .metric-box .value { font-size: 1.7rem; font-weight: 700; color: var(--primary); }
+    .metric-box .label { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      overflow-x: auto;
+    }
+    th {
+      background: #e9ecef;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 2px solid var(--border);
+    }
+    td { padding: 0.45rem 0.75rem; border-bottom: 1px solid var(--border); }
+    tr:nth-child(even) td { background: #f2f2f2; }
+    .table-wrap { overflow-x: auto; border-radius: 6px; border: 1px solid var(--border); }
+    .insight {
+      padding: 0.6rem 1rem;
+      border-left: 4px solid var(--info);
+      margin: 0.5rem 0;
+      background: #f0f9ff;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+    }
+    .insight.warning {
+      border-color: var(--warning);
+      background: #fff8f0;
+    }
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(520px, 1fr));
+      gap: 1.25rem;
+    }
+    .chart-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      overflow: hidden;
+    }
+    .chart-caption {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: #e9ecef;
+      color: #495057;
+      margin: 0.2rem;
+    }
+    .badge.info { background: #cff4fc; color: #087990; }
+    .badge.warning { background: #ffe5d0; color: #984c0c; }
+    .quality-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Auto-Insight Report</h1>
+  <p>{{ bundle.source.filename }} &bull; Generated {{ bundle.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+</header>
+
+<main>
+
+  {# ═══════════════════════════════════════════════════════════════════════ #}
+  {# 1. Overview                                                             #}
+  {# ═══════════════════════════════════════════════════════════════════════ #}
+  <section id="overview">
+    <h2>1 · Overview</h2>
+    <div class="metric-grid">
+      <div class="metric-box">
+        <div class="value">{{ bundle.source.n_rows_raw }}</div>
+        <div class="label">Raw Rows</div>
+      </div>
+      <div class="metric-box">
+        <div class="value">{{ bundle.clean.df.shape[0] }}</div>
+        <div class="label">Clean Rows</div>
+      </div>
+      <div class="metric-box">
+        <div class="value">{{ bundle.source.n_cols_raw }}</div>
+        <div class="label">Raw Columns</div>
+      </div>
+      <div class="metric-box">
+        <div class="value">{{ bundle.clean.df.shape[1] }}</div>
+        <div class="label">Clean Columns</div>
+      </div>
+      <div class="metric-box">
+        <div class="value">{{ bundle.clean.actions | length }}</div>
+        <div class="label">Cleaning Actions</div>
+      </div>
+      <div class="metric-box">
+        <div class="value">{{ bundle.charts | length }}</div>
+        <div class="label">Charts Generated</div>
+      </div>
+      {% if bundle.forecast %}
+      <div class="metric-box">
+        <div class="value">{{ bundle.forecast.params.horizon }}</div>
+        <div class="label">Forecast Steps</div>
+      </div>
+      {% endif %}
+    </div>
+    <div class="card">
+      <strong>File:</strong> {{ bundle.source.filename }}<br/>
+      <strong>Format:</strong> {{ bundle.source.source_format.value | upper }}<br/>
+      <strong>Memory:</strong> {{ "%.2f"|format(bundle.profile.memory_mb) }} MB<br/>
+      {% if bundle.profile.primary_date_col %}
+      <strong>Date Column:</strong> {{ bundle.profile.primary_date_col }}<br/>
+      {% endif %}
+      <strong>Analysed at:</strong> {{ bundle.created_at.strftime('%Y-%m-%d %H:%M:%S') }}
+    </div>
+  </section>
+
+  {# ═══════════════════════════════════════════════════════════════════════ #}
+  {# 2. Data Quality                                                         #}
+  {# ═══════════════════════════════════════════════════════════════════════ #}
+  <section id="quality">
+    <h2>2 · Data Quality</h2>
+    <div class="quality-grid">
+      <div class="card">
+        <h3>Before Cleaning</h3>
+        <table>
+          <tr><th>Metric</th><th>Value</th></tr>
+          <tr><td>Rows</td><td>{{ bundle.clean.quality_before.n_rows }}</td></tr>
+          <tr><td>Columns</td><td>{{ bundle.clean.quality_before.n_cols }}</td></tr>
+          <tr><td>Missing Cells</td><td>{{ bundle.clean.quality_before.missing_cells }}</td></tr>
+          <tr><td>Duplicate Rows</td><td>{{ bundle.clean.quality_before.duplicate_rows }}</td></tr>
+          <tr><td>Outlier Cells (IQR)</td><td>{{ bundle.clean.quality_before.outlier_cells }}</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3>After Cleaning</h3>
+        <table>
+          <tr><th>Metric</th><th>Value</th></tr>
+          <tr><td>Rows</td><td>{{ bundle.clean.quality_after.n_rows }}</td></tr>
+          <tr><td>Columns</td><td>{{ bundle.clean.quality_after.n_cols }}</td></tr>
+          <tr><td>Missing Cells</td><td>{{ bundle.clean.quality_after.missing_cells }}</td></tr>
+          <tr><td>Duplicate Rows</td><td>{{ bundle.clean.quality_after.duplicate_rows }}</td></tr>
+          <tr><td>Outlier Cells (IQR)</td><td>{{ bundle.clean.quality_after.outlier_cells }}</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <h3>Cleaning Log</h3>
+    <div class="table-wrap">{{ cleaning_log_html }}</div>
+
+    {% if bundle.clean.rename_map %}
+    <h3>Column Renames</h3>
+    <div class="card">
+      {% for orig, new in bundle.clean.rename_map.items() %}
+        {% if orig != new %}
+          <span class="badge">{{ orig }}</span> → <span class="badge info">{{ new }}</span><br/>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  </section>
+
+  {# ═══════════════════════════════════════════════════════════════════════ #}
+  {# 3. Column Profile                                                       #}
+  {# ═══════════════════════════════════════════════════════════════════════ #}
+  <section id="profile">
+    <h2>3 · Column Profile</h2>
+    <div class="table-wrap">{{ profile_html }}</div>
+  </section>
+
+  {# ═══════════════════════════════════════════════════════════════════════ #}
+  {# 4. Key Statistics                                                       #}
+  {# ═══════════════════════════════════════════════════════════════════════ #}
+  <section id="statistics">
+    <h2>4 · Key Statistics</h2>
+    {% if desc_html %}
+      <h3>Descriptive Statistics</h3>
+      <div class="table-wrap">{{ desc_html }}</div>
+    {% else %}
+      <p style="color:var(--muted)">No numeric columns available for descriptive statistics.</p>
+    {% endif %}
+
+    {% if corr_html %}
+      <h3>Correlation Matrix (Pearson)</h3>
+      <div class="table-wrap">{{ corr_html }}</div>
+    {% endif %}
+  </section>
+
+  {# ═══════════════════════════════════════════════════════════════════════ #}
+  {# 5. Insights                                                             #}
+  {# ═══════════════════════════════════════════════════════════════════════ #}
+  <section id="insights">
+    <h2>5 · Insights</h2>
+    {% if bundle.insights %}
+      {% for insight in bundle.insights %}
+        <div class="insight {{ insight.level }}">
+          <span class="badge {{ insight.level }}">{{ insight.level | upper }}</span>
+          <span class="badge">{{ insight.category }}</span>
+          {{ insight.text }}
+        </div>
+      {% endfor %}
+    {% else %}
+      <p style="color:var(--muted)">No insights generated.</p>
+    {% endif %}
+  </section>
+
+  {# ═══════════════════════════════════════════════════════════════════════ #}
+  {# 6. Charts grouped by ChartGroup                                         #}
+  {# ═══════════════════════════════════════════════════════════════════════ #}
+  <section id="charts">
+    <h2>6 · Charts</h2>
+    {% set group_labels = {
+      'distribution': 'Distributions',
+      'category': 'Categories',
+      'relationship': 'Relationships',
+      'text': 'Text Analysis',
+      'time_series': 'Time Series'
+    } %}
+    {% for group_key, specs in grouped_charts.items() %}
+      <h3>{{ group_labels.get(group_key, group_key | title) }}</h3>
+      <div class="chart-grid">
+        {% for spec in specs %}
+          <div class="chart-card">
+            {{ chart_html(spec) }}
+            <p class="chart-caption">{{ spec.description }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p style="color:var(--muted)">No charts were generated.</p>
+    {% endfor %}
+  </section>
+
+  {# ═══════════════════════════════════════════════════════════════════════ #}
+  {# 7. Time Series and Forecast                                             #}
+  {# ═══════════════════════════════════════════════════════════════════════ #}
+  {% if bundle.forecast %}
+  <section id="forecast">
+    <h2>7 · Time Series and Forecast</h2>
+    <div class="card">
+      <strong>Target:</strong> {{ bundle.forecast.params.target_col }}<br/>
+      <strong>Date Column:</strong> {{ bundle.forecast.params.date_col }}<br/>
+      <strong>Frequency:</strong> {{ bundle.forecast.freq }}<br/>
+      <strong>ARIMA Order:</strong> {{ bundle.forecast.order }}<br/>
+      <strong>AIC:</strong> {{ "%.4f"|format(bundle.forecast.aic) }}<br/>
+      {% if bundle.forecast.backtest %}
+        <strong>Backtest MAE:</strong> {{ "%.4f"|format(bundle.forecast.backtest.mae) }},
+        <strong>RMSE:</strong> {{ "%.4f"|format(bundle.forecast.backtest.rmse) }}
+        {% if bundle.forecast.backtest.mape is not none %}
+          , <strong>MAPE:</strong> {{ "%.1f"|format(bundle.forecast.backtest.mape) }}%
+        {% endif %}
+      {% endif %}
+    </div>
+
+    <div class="chart-grid">
+      {% for spec in bundle.forecast_charts %}
+        <div class="chart-card">
+          {{ chart_html(spec) }}
+          <p class="chart-caption">{{ spec.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if forecast_html %}
+      <h3>Forecast Table</h3>
+      <div class="table-wrap">{{ forecast_html }}</div>
+    {% endif %}
+  </section>
+  {% endif %}
+
+  {# ═══════════════════════════════════════════════════════════════════════ #}
+  {# 8. Regression and Transformation Summary                                #}
+  {# ═══════════════════════════════════════════════════════════════════════ #}
+  {% if bundle.transform is not none %}
+  <section id="transform">
+    <h2>8 · Regression and Transformation Summary</h2>
+
+    {% if bundle.analysis.regression %}
+      {% set reg = bundle.analysis.regression %}
+      <h3>Linear Regression: {{ reg.y }} ~ {{ reg.x }}</h3>
+      <div class="metric-grid">
+        <div class="metric-box">
+          <div class="value">{{ "%.4f"|format(reg.r2) }}</div>
+          <div class="label">R²</div>
+        </div>
+        <div class="metric-box">
+          <div class="value">{{ "%.4f"|format(reg.coef) }}</div>
+          <div class="label">Coefficient</div>
+        </div>
+        <div class="metric-box">
+          <div class="value">{{ "%.4f"|format(reg.intercept) }}</div>
+          <div class="label">Intercept</div>
+        </div>
+        <div class="metric-box">
+          <div class="value">{{ "%.4f"|format(reg.mae) }}</div>
+          <div class="label">MAE</div>
+        </div>
+        <div class="metric-box">
+          <div class="value">{{ "%.4f"|format(reg.rmse) }}</div>
+          <div class="label">RMSE</div>
+        </div>
+        <div class="metric-box">
+          <div class="value">{{ reg.n_train }} / {{ reg.n_test }}</div>
+          <div class="label">Train / Test rows</div>
+        </div>
+      </div>
+    {% endif %}
+
+    <h3>Transformation Views Available</h3>
+    <ul>
+      <li>Min-max scaled ({{ bundle.transform.scaled_minmax.shape[1] }} columns)</li>
+      <li>Standard scaled ({{ bundle.transform.scaled_standard.shape[1] }} columns)</li>
+      <li>Label encoded ({{ bundle.transform.label_encoded.shape[1] }} columns)</li>
+      <li>One-hot encoded ({{ bundle.transform.one_hot.shape[1] }} columns)</li>
+      <li>Binned ({{ bundle.transform.binned.shape[1] }} columns)</li>
+      <li>ML-ready combined ({{ bundle.transform.ml_ready.shape[1] }} columns)</li>
+    </ul>
+
+    {% if bundle.transform.aggregations %}
+      <h3>Aggregations</h3>
+      {% for key, agg_df in bundle.transform.aggregations.items() %}
+        <h4>{{ key }}</h4>
+        <div class="table-wrap">{{ agg_df.to_html(escape=True, index=False, max_rows=20) }}</div>
+      {% endfor %}
+    {% endif %}
+  </section>
+  {% endif %}
+
+</main>
+
+<footer>
+  Auto-Insight Report Generator &bull; DAV Lab, Ramdeobaba University &bull;
+  Generated with Python + Streamlit + Plotly
+</footer>
+
+</body>
+</html>
+
