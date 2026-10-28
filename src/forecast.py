@@ -170,7 +170,7 @@ def run_forecast(df: pd.DataFrame, params: ForecastParams) -> ForecastResult:
                 series_resampled,
                 model=model_type,
                 period=seasonal_period,
-                extrapolate_trend="period",
+                extrapolate_trend="freq",
             )
             decomposition = DecompositionResult(
                 model=model_type,
@@ -189,14 +189,14 @@ def run_forecast(df: pd.DataFrame, params: ForecastParams) -> ForecastResult:
         )
 
     # --- Step 8: Stationarity (ADF) ---
-    adf_result = adfuller(series_resampled.dropna(), result_object=False)
+    adf_result = adfuller(series_resampled.dropna())
     adf_pvalue = float(adf_result[1])
 
     d = 0
     if adf_pvalue >= ADF_ALPHA:
         diff1 = series_resampled.diff().dropna()
         if len(diff1) > 0:
-            adf2 = adfuller(diff1, result_object=False)
+            adf2 = adfuller(diff1)
             if adf2[1] < ADF_ALPHA:
                 d = 1
             else:

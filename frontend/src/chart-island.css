@@ -1,0 +1,21 @@
+.bklit-chart-frame {
+  width: 100%;
+  min-height: 180px;
+  color: var(--chart-foreground);
+  font-family: inherit;
+}
+
+.bklit-chart-frame > div:first-child {
+  width: 100%;
+}
+
+.bklit-chart-frame .chart-note {
+  margin: 0.4rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+
+.bklit-chart-frame svg text { font-family: inherit; }
+.bklit-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 10px 0 0; padding: 0; color: var(--chart-label); font-size: 11px; list-style: none; }
+.bklit-legend li { display: inline-flex; align-items: center; gap: 7px; min-height: 22px; }
+.bklit-legend i { display: inline-block; width: 8px; height: 8px; flex: 0 0 auto; border-radius: 50%; }

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto-Insight Report Generator — Modern Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+      </div>
+      <div>
+        <div class="brand-title">Auto-Insight</div>
+        <div class="brand-sub">Analytics & Reports</div>
+      </div>
+    </div>
+
+    <ul class="nav-menu">
+      <li class="nav-item active" data-page="upload">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <span>Upload & Ingest</span>
+      </li>
+      <li class="nav-item" data-page="profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>Data Profile</span>
+      </li>
+      <li class="nav-item" data-page="explore">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        <span>Explore & Charts</span>
+      </li>
+      <li class="nav-item" data-page="forecast">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="m17 5-5-3-5 3"/><path d="m17 19-5 3-5-3"/></svg>
+        <span>Forecasting</span>
+      </li>
+      <li class="nav-item" data-page="insights">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Insights & Report</span>
+      </li>
+      <li class="nav-item" data-page="saved">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        <span>Saved Datasets</span>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <div class="status-badge">
+        <div class="status-dot"></div>
+        <span id="session-status">No dataset loaded</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Viewport -->
+  <main class="main-content">
+
+    <!-- PAGE 1: Upload & Ingest -->
+    <section id="view-upload" class="view-section">
+      <div class="header-bar">
+        <div>
+          <h1 class="page-title">Dataset Ingestion & Cleaning</h1>
+          <p class="page-subtitle">Upload CSV, JSON, XML, or plain text, or connect to a public data API.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 18px;">
+        <div class="tabs">
+          <button class="tab-btn active" onclick="switchUploadTab('file')">Upload Local File</button>
+          <button class="tab-btn" onclick="switchUploadTab('url')">Ingest from Public URL</button>
+          <button class="tab-btn" onclick="switchUploadTab('sample')">Load Sample Datasets</button>
+        </div>
+
+        <!-- File Tab -->
+        <div id="tab-file">
+          <div class="dropzone" id="dropzone" onclick="document.getElementById('file-input').click()">
+            <input type="file" id="file-input" style="display:none" accept=".csv,.json,.xml,.txt">
+            <div class="dropzone-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <h3 style="margin-bottom: 6px;">Choose a file or drag & drop here</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Supports CSV, JSON, XML, and TXT (up to 50MB)</p>
+          </div>
+        </div>
+
+        <!-- URL Tab -->
+        <div id="tab-url" style="display:none;">
+          <div style="display: flex; gap: 12px; margin-top: 12px;">
+            <input type="text" id="url-input" placeholder="https://raw.githubusercontent.com/.../data.csv" style="flex: 1; padding: 12px 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-glass); border-radius: var(--radius-md); color: #fff; font-family: inherit;">
+            <button class="btn btn-primary" onclick="ingestFromUrl()">Fetch & Analyze</button>
+          </div>
+        </div>
+
+        <!-- Sample Tab -->
+        <div id="tab-sample" style="display:none;">
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 14px;">Select one of the pre-loaded benchmark datasets:</p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button class="btn btn-secondary" onclick="loadSample('data/samples/sample_ecommerce.csv')">📦 E-Commerce Orders (CSV)</button>
+            <button class="btn btn-secondary" onclick="loadSample('data/samples/sample_timeseries.csv')">📈 Monthly Sales Time-Series (CSV)</button>
+            <button class="btn btn-secondary" onclick="loadSample('data/samples/sample_products.json')">🏷️ Products Catalog (JSON)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 2: Data Profile -->
+    <section id="view-profile" class="view-section" style="display:none;">
+      <div class="header-bar">
+        <div>
+          <h1 class="page-title">Dataset Profile & Health</h1>
+          <p class="page-subtitle">Automated type inference, completeness audits, and hygiene metrics.</p>
+        </div>
+        <div class="action-group">
+          <button class="btn btn-primary" onclick="showSaveModal()">💾 Save to Database</button>
+        </div>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">Clean Rows</div>
+          <div class="metric-value" id="stat-rows">-</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Columns</div>
+          <div class="metric-value" id="stat-cols">-</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Duplicates Dropped</div>
+          <div class="metric-value" id="stat-dups">-</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Date Column</div>
+          <div class="metric-value" id="stat-date" style="font-size: 1.25rem;">-</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 20px;">
+        <h3 class="card-title" style="margin-bottom: 16px;">Column Classification & Health Matrix</h3>
+        <div class="table-wrapper">
+          <table id="profile-table">
+            <thead>
+              <tr>
+                <th>Column</th>
+                <th>Classification</th>
+                <th>Data Type</th>
+                <th>Missing / Nulls</th>
+                <th>Distinct Values</th>
+                <th>Summary Statistics</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 20px;">
+        <h3 class="card-title" style="margin-bottom: 16px;">Cleaned Data Preview (First 50 Rows)</h3>
+        <div class="table-wrapper" style="max-height: 400px; overflow-y: auto;">
+          <table id="clean-preview-table">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 3: Explore & Charts -->
+    <section id="view-explore" class="view-section" style="display:none;">
+      <div class="header-bar">
+        <div>
+          <h1 class="page-title">Exploratory Visualizations & Models</h1>
+          <p class="page-subtitle">Interactive distributions, category breakdowns, correlation matrix, and OLS regression.</p>
+        </div>
+      </div>
+
+      <div class="charts-grid" id="charts-container"></div>
+    </section>
+
+    <!-- PAGE 4: Forecasting -->
+    <section id="view-forecast" class="view-section" style="display:none;">
+      <div class="header-bar">
+        <div>
+          <h1 class="page-title">Time-Series & Forecasting</h1>
+          <p class="page-subtitle">ARIMA grid-search, rolling averages (SMA/EMA), and seasonal decomposition.</p>
+        </div>
+      </div>
+
+      <div class="card" id="forecast-controls-card">
+        <h3 class="card-title" style="margin-bottom: 16px;">Forecast Configuration</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+          <div>
+            <label style="font-size: 0.8rem; color: var(--text-muted);">Date Column</label>
+            <select id="fc-date-col" style="width: 100%; padding: 10px; margin-top: 6px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); border-radius: var(--radius-sm); color: #fff;"></select>
+          </div>
+          <div>
+            <label style="font-size: 0.8rem; color: var(--text-muted);">Target Column</label>
+            <select id="fc-target-col" style="width: 100%; padding: 10px; margin-top: 6px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); border-radius: var(--radius-sm); color: #fff;"></select>
+          </div>
+          <div>
+            <label style="font-size: 0.8rem; color: var(--text-muted);">Horizon (periods)</label>
+            <input type="number" id="fc-horizon" value="12" min="1" max="60" style="width: 100%; padding: 10px; margin-top: 6px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); border-radius: var(--radius-sm); color: #fff;">
+          </div>
+          <div style="display: flex; align-items: flex-end;">
+            <button class="btn btn-primary" style="width: 100%;" onclick="triggerRecalculateForecast()">Run Model Forecast</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="charts-grid" id="forecast-charts-container" style="margin-top: 20px;"></div>
+    </section>
+
+    <!-- PAGE 5: Insights & Reports -->
+    <section id="view-insights" class="view-section" style="display:none;">
+      <div class="header-bar">
+        <div>
+          <h1 class="page-title">Synthesized Insights & Full Report</h1>
+          <p class="page-subtitle">Automated natural-language insights and downloadable standalone report.</p>
+        </div>
+        <div class="action-group">
+          <a class="btn btn-primary" href="/api/report/html" target="_blank" download="auto_insight_report.html">📥 Download Full HTML Report</a>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 18px;">
+        <h3 class="card-title" style="margin-bottom: 16px;">Key Findings & Automated Recommendations</h3>
+        <div id="insights-list"></div>
+      </div>
+
+      <div class="card" style="margin-top: 20px;">
+        <h3 class="card-title" style="margin-bottom: 16px;">Live Embedded Report Preview</h3>
+        <iframe id="report-frame" src="/api/report/preview" style="width: 100%; height: 750px; border: 1px solid var(--border-glass); border-radius: var(--radius-md); background: #fff;"></iframe>
+      </div>
+    </section>
+
+    <!-- PAGE 6: Saved Datasets -->
+    <section id="view-saved" class="view-section" style="display:none;">
+      <div class="header-bar">
+        <div>
+          <h1 class="page-title">Persisted Datasets in SQLite</h1>
+          <p class="page-subtitle">Manage historical cleaned datasets stored via SQLAlchemy ORM.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 18px;">
+        <div class="table-wrapper">
+          <table id="saved-datasets-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Format</th>
+                <th>Clean Rows</th>
+                <th>Columns</th>
+                <th>Saved At</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Loading Overlay -->
+  <div class="spinner-overlay" id="loading-spinner">
+    <div class="spinner"></div>
+    <div id="loading-text" style="font-weight: 600; color: #fff;">Running Pipeline...</div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
