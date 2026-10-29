@@ -8,7 +8,6 @@ import streamlit as st
 
 from ui import components
 
-st.set_page_config(page_title="Profile — Auto-Insight", page_icon="📋", layout="wide")
 st.title("📋 Data Profile")
 
 bundle = components.require_bundle()

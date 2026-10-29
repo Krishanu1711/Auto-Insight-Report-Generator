@@ -9,7 +9,6 @@ from src import database, report as rpt
 from src.exceptions import InsightError
 from ui import components, state
 
-st.set_page_config(page_title="Report — Auto-Insight", page_icon="📄", layout="wide")
 st.title("📄 Report & Export")
 
 bundle = components.require_bundle()

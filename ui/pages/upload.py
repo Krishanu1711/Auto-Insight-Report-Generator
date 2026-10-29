@@ -11,8 +11,6 @@ from src.models import CleaningConfig, OutlierTreatment, PipelineConfig
 from src.utils import sha256_bytes
 from ui import components, state
 
-st.set_page_config(page_title="Upload — Auto-Insight", page_icon="📤", layout="wide")
-
 st.title("📤 Upload & Analyse")
 st.caption("Upload a CSV, JSON, XML or TXT file to get started.")
 

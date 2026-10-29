@@ -10,7 +10,6 @@ from src import database
 from src.exceptions import InsightError
 from ui import components
 
-st.set_page_config(page_title="Saved — Auto-Insight", page_icon="🗄️", layout="wide")
 st.title("🗄️ Saved Datasets")
 
 # ---------------------------------------------------------------------------

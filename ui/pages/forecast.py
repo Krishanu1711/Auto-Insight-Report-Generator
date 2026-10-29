@@ -11,7 +11,6 @@ from src.exceptions import ForecastError
 from src.models import ColumnKind, ForecastParams
 from ui import components, state
 
-st.set_page_config(page_title="Forecast — Auto-Insight", page_icon="🔮", layout="wide")
 st.title("🔮 Time-Series Forecast")
 
 bundle = components.require_bundle()

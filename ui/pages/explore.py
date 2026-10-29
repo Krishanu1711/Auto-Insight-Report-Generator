@@ -8,7 +8,6 @@ import streamlit as st
 from src.models import ChartGroup
 from ui import components
 
-st.set_page_config(page_title="Explore — Auto-Insight", page_icon="📈", layout="wide")
 st.title("📈 Explore Charts")
 
 bundle = components.require_bundle()
